@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(schema = "TB_PACIENTES")
 @AllArgsConstructor
@@ -22,5 +24,5 @@ public class Paciente {
     private String telefone;
     private String email;
     private String endereco;
-    private String dataNascimento;
+    private LocalDate dataNascimento;
 }
