@@ -6,10 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(schema = "TB_CONSULTAS")
+@Table(name = "TB_CONSULTAS")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -28,7 +28,7 @@ public class Consulta {
     private Medico medico;
 
 
-    private String dataConsulta;
+    private LocalDateTime dataConsulta;
     private Float valorConsulta;
     private StatusConsulta statusConsulta;
 }
