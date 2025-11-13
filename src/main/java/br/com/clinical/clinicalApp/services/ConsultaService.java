@@ -7,17 +7,21 @@ import br.com.clinical.clinicalApp.dto.UpdateConsultaDTO;
 import br.com.clinical.clinicalApp.mappers.ConsultaMapper;
 import br.com.clinical.clinicalApp.models.Consulta;
 import br.com.clinical.clinicalApp.repositories.ConsultaRepository;
-import lombok.AllArgsConstructor;
-import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class ConsultaService {
     private ConsultaRepository repository;
     private ConsultaMapper mapper;
+
+    @Autowired
+    public ConsultaService(ConsultaRepository repository, ConsultaMapper mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
+    }
 
     public List<ResponseConsultaDTO> listarConsultas() {
         return repository.findAll()

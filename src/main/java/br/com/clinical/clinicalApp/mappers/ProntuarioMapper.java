@@ -9,25 +9,28 @@ import org.mapstruct.Named;
 @Mapper(componentModel = "spring")
 public interface ProntuarioMapper {
 
+    // Mapeia idPaciente -> paciente e idMedico -> medico
     @Mapping(target = "paciente", source = "idPaciente", qualifiedByName = "mapPacienteFromId")
     @Mapping(target = "medico", source = "idMedico", qualifiedByName = "mapMedicoFromId")
     Prontuario toEntity(RequestProntuarioDTO dto);
 
-    ResponseProntuarioDTO mapResponseFromProntuario(Prontuario prontuario);
+    ResponseProntuarioDTO toResponse(Prontuario prontuario);
 
+    // Conversão manual de Long -> Paciente
     @Named("mapPacienteFromId")
     default Paciente mapPacienteFromId(Long id) {
         if (id == null) return null;
-        Paciente p = new Paciente();
-        p.setId(id);
-        return p;
+        Paciente paciente = new Paciente();
+        paciente.setId(id);
+        return paciente;
     }
 
+    // Conversão manual de Long -> Medico
     @Named("mapMedicoFromId")
     default Medico mapMedicoFromId(Long id) {
         if (id == null) return null;
-        Medico m = new Medico();
-        m.setId(id);
-        return m;
+        Medico medico = new Medico();
+        medico.setId(id);
+        return medico;
     }
 }

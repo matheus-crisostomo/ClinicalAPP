@@ -1,11 +1,7 @@
 package br.com.clinical.clinicalApp.models;
 
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import java.time.LocalDate;
 
 @Entity
@@ -18,11 +14,11 @@ public class Prontuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDate data;
     private String diagnostico;
     private String tratamento;
     private String observacao;
-
 
     @OneToOne
     @JoinColumn(name = "paciente_id")
